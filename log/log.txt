@@ -1,0 +1,4 @@
+нояб. 25, 2020 9:43:24 PM Loader1 main
+INFO: INFO
+нояб. 25, 2020 9:43:24 PM Loader1 main
+WARNING: WARNING
