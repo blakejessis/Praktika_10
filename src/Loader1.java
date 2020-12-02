@@ -1,38 +1,38 @@
 import java.io.*;
-import java.util.logging.FileHandler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
+
 
 public class Loader1 {
-    private static Logger logger;
-    public static void main(String[] args) {
-        createLogFile();
+
+
+    public static void pr2() {
         try {
-            logger.log(Level.INFO, "INFO");
-            logger.log(Level.WARNING, "WARNING");
-        } catch (Exception e) {
-            e.printStackTrace();
-            logger.log(Level.WARNING, "something wrong");
+            PrintWriter writer = new PrintWriter("log/log.txt");
+
+            writer.write("logiruem soobshenia v otdelniy fail");
+
+            for (int i = 0; i <= 1000; i++) {
+                writer.write(i + "\n");
+            }
+            writer.flush();
+            writer.close();
+
+        } catch (Exception ex)
+        {
+            ex.printStackTrace();
         }
     }
 
-    private static void createLogFile() {
-        File filePath = new File("log");
-        filePath.mkdir();
-        File logfile = new File(filePath + "\\log.txt");
-        try {
-            logfile.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try (FileOutputStream os = new FileOutputStream("log\\log.txt")) {
-            logger = Logger.getLogger(Loader1.class.getName());
-            FileHandler fileHandler = new FileHandler("log\\log.txt");
-            fileHandler.setFormatter(new SimpleFormatter());
-            logger.addHandler(fileHandler);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public static void main(String[] args) {
+        File file = new File("C:\\Users\\Андрей\\IdeaProjects\\Praktika_10\\log");
+            if (!file.exists()) {
+                if (file.mkdir()) {
+                    System.out.println("Folder/Directory is created successfully");
+                } else {
+                    System.out.println("Directory/Folder creation failed!!!");
+                }
+            }
+        pr2();
     }
+
+
 }
